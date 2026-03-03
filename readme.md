@@ -7,7 +7,7 @@ Modelagem em Orientaçao à Objetos das Entidades Alunos, Cursos e Turmas.
 flowchart LR
     Usuario([secretaria])
 
-    UC1((Cadastrar Alunos))
+    UC1(( Alunos))
     UC2((Editar Alunos))
     UC3((Transferir Aluno))
 
@@ -26,7 +26,7 @@ classDiagram
         - Telefone
         - Endereço
         - Matricula
-        + Cadastrar()
+        + ()
         + editar()
         + transferir()
     }
