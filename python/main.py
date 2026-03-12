@@ -1,4 +1,4 @@
 from modules.aluno import Aluno
-from modules.mysql import MySQL
+from modules.mysql import Mysql 
 
-banco = MySQL
+banco = MySQL 

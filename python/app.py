@@ -1,52 +1,47 @@
-from PySide6.QtWidgets import QApplication, QPushButton
-    
-from.screen.cadastrar import Cadastrar
-
+from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+from screen.cadastrar import Cadastrar
 from screen.listar import Listar
-    
-import sys 
+
+import sys
 
 class App:
     def __init__(self):
-
-
         self.app = QApplication(sys.argv)
 
-
-        self.janela = ()
-        self.layout = ()
-    
+        # Criar janela principal
+        self.janela = QWidget()
         self.janela.setWindowTitle("Sistema Universidade")
         self.janela.resize(400, 200)
+
+        # Criar layout
+        self.layout = QVBoxLayout()
         self.janela.setLayout(self.layout)
-        
-        self.criar_botao()
-        
+
+        # Criar botões
+        self.criar_botoes()
+
         self.janela.show()
-        
-        
-    def criar_botao(self):
-        botao_listar= QPushButton("Listar")
-        self.layout.addWidget(botao_listar)
+
+    def criar_botoes(self):
+        # Botão Listar
+        botao_listar = QPushButton("Listar")
         botao_listar.clicked.connect(self.abrir_listagem)
-        
-        def abrir_listagem(self):
-            tela_listagem = Listar(self.app)
-            tela_listagem.janela.show()
-            
-            
-        def abrir_cadastro(self):    
-            self.tela_cadastro = Cadastrar(self.app)
-            self.tela_cadastro.janela.show()
-            
-        
-if __name__ == " __main__":
-        system = App()     
-        sys.exit(system.app.exec())
-    
-# app = QApplication(sys.argv)
-    
-# # Tela = Cadastrar (app)
-# Tela = Listar (app)
-# Tela.janela.show(app)
-# sys.exit(Tela.app.exec()) 
+        self.layout.addWidget(botao_listar)
+
+        # Botão Cadastrar
+        botao_cadastrar = QPushButton("Cadastrar")
+        botao_cadastrar.clicked.connect(self.abrir_cadastro)
+        self.layout.addWidget(botao_cadastrar)
+
+    def abrir_listagem(self):
+        self.tela_listar = Listar(self.app)
+        self.tela_listar.janela.show()
+
+    def abrir_cadastro(self):
+        self.tela_cadastro = Cadastrar(self.app)
+        self.tela_cadastro.janela.show()
+
+
+if __name__ == "__main__":
+    sistema = App()
+    sys.exit(sistema.app.exec())

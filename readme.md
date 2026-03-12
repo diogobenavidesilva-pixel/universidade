@@ -1,4 +1,4 @@
-# Projeto Universidade
+# Projeto Universidade 
 
 Modelagem em Orientaçao à Objetos das Entidades Alunos, Cursos e Turmas.
 
@@ -18,21 +18,61 @@ flowchart LR
 
 ## Diagrama de classes
 ```mermaid
-classDiagram
-    class Aluno{
-        - Nome
-        - Email
-        - CPF
-        - Telefone
-        - Endereço
-        - Matricula
-        + ()
-        + editar()
-        + transferir()
-    }
-```
+## Diagrama de Sequência - **Cadastro**
+```mermaid
+sequenceDiagram 
+    participant UI as TelaCadastro 
+    participant Entidade as Aluno 
+    participant DB as MySQL 
+    participant Banco as MySQL Server 
 
-## Dependencias
+    UI ->> Entidade: cria Aluno(...) 
+    UI ->> DB: connect() 
+    UI ->> Entidade: cadastrar(DB) 
+    Entidade ->> DB: execute_query(INSERT) 
+    DB ->> Banco: Envia SQL 
+    Banco -->> DB: Confirmação 
+    DB -->> Entidade: lastrowid 
+    UI ->> DB: disconnect()
+```
+## Diagrama de Sequência - **Listagem**
+```mermaid
+sequenceDiagram
+    participant UI as TelaListagem
+    participant Entidade as Aluno
+    participant DB as MySQL
+    participant Banco as MySQL Server
+
+    UI ->> DB: connect()
+    UI ->> Entidade: listar(DB)
+    Entidade ->> DB: execute_query(SELECT)
+    DB ->> Banco: Envia SQL (SELECT)
+    Banco -->> DB: Retorna registros
+    DB -->> Entidade: lista de alunos
+    Entidade -->> UI: lista de alunos
+    UI ->> UI: preencher QTableWidget
+    UI ->> DB: disconnect()
+```
+## Diagrama de Sequência - **Listagem**
+```mermaid
+sequenceDiagram
+    participant UI as TelaListagem
+    participant Entidade as Aluno
+    participant DB as MySQL
+    participant Banco as MySQL Server
+
+    UI ->> DB: connect()
+    UI ->> Entidade: listar(DB)
+    Entidade ->> DB: execute_query(SELECT)
+    DB ->> Banco: Envia SQL (SELECT)
+    Banco -->> DB: Retorna registros
+    DB -->> Entidade: lista de alunos
+    Entidade -->> UI: lista de alunos
+    UI ->> UI: preencher QTableWidget
+    UI ->> DB: disconnect()
+```
+ **Dependencias:**
+
 - **VSCode**: IDE(Interface de Desenvolvimento)
 
 - **Mermaid**: Linguagem para confecçao de Diagramas em documentos MD (Mark Down)
@@ -41,3 +81,29 @@ classDiagram
 
 - **Git Lens**: Interface grafica pra o 
 versionamento .git integrada ao VSCode.
+
+# conceitos Mysql
+
+## Build 
+
+**Dependencias:**
+
+pip install pyinstaller
+```
+**Congelar Depedencias:**
+
+pip install -r requirements.txt
+```
+pip freeze > requirements.txt
+```
+
+**Diretorio Raiz do Projeto Pasta:**
+Python
+```
+cd python
+```
+```
+pyinstaller --onefile --windowed app.py
+```
+
+**O executavel estara em:** dist/app.exe
