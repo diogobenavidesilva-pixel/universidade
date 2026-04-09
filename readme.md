@@ -20,9 +20,6 @@ flowchart LR
 ```mermaid
 ## Diagrama de Sequência - **Cadastro**
 
-
-## Diagrama de Sequência - **Listagem**
-```mermaid
 sequenceDiagram
     participant UI as TelaListagem
     participant Entidade as Aluno
