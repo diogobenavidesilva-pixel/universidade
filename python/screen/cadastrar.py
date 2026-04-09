@@ -1,4 +1,4 @@
-from modules.Mysql import MySQL # pyright: ignore[reportMissingImports]
+from modules.mysql import MySQL # pyright: ignore[reportMissingImports]
 from modules.aluno import Aluno
 
 from PySide6.QtWidgets import (

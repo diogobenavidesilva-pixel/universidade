@@ -20,7 +20,7 @@ class App:
         # Criar botões
         self.criar_botoes()
 
-        self.janela.show()
+        self.janela.show() 
 
     def criar_botoes(self):
         # Botão Listar
