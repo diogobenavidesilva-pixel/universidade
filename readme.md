@@ -19,22 +19,8 @@ flowchart LR
 ## Diagrama de classes
 ```mermaid
 ## Diagrama de Sequência - **Cadastro**
-```mermaid
-sequenceDiagram 
-    participant UI as TelaCadastro 
-    participant Entidade as Aluno 
-    participant DB as MySQL 
-    participant Banco as MySQL Server 
 
-    UI ->> Entidade: cria Aluno(...) 
-    UI ->> DB: connect() 
-    UI ->> Entidade: cadastrar(DB) 
-    Entidade ->> DB: execute_query(INSERT) 
-    DB ->> Banco: Envia SQL 
-    Banco -->> DB: Confirmação 
-    DB -->> Entidade: lastrowid 
-    UI ->> DB: disconnect()
-```
+
 ## Diagrama de Sequência - **Listagem**
 ```mermaid
 sequenceDiagram
