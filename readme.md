@@ -1,4 +1,4 @@
-# Projeto Universidade 
+# Projeto Universidade
 
 Modelagem em Orientaçao à Objetos das Entidades Alunos, Cursos e Turmas.
 
